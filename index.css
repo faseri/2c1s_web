@@ -7,9 +7,8 @@ html::-webkit-scrollbar {
 }
 body {
 	font-family: "Arial";
-	background: url(img/kneeling.jpeg) no-repeat center center fixed;
+	background: url(img/bg.jpg) repeat 0 0 fixed;
 	backdrop-filter: blur(8px) sepia(80%);
-	background-size: cover;
 }
 body > * {
 	background: #eee;
@@ -51,7 +50,6 @@ body > * {
 .glasspane img {
 	opacity: 100%;
 	border-radius: 30px;
-	padding: 10px;
 	max-width:100%;
 	max-height:100%;
 }
@@ -59,15 +57,13 @@ body > * {
 #list{
 	top: 45%;
 	left: 50%;
-	margin-right: -50%;
 	background: rgba(238,238,238,0.5);
 	position: relative;
-	margin: 0;
-	width: 160px;
 	transform: translate(-50%, -50%);
+	width: 30%;
 }
-#list ol{
-	margin-left: -16px;
+#list ul{
+	margin-left: -15px;
 }
 #list li{
 	margin-left: 6px;
@@ -102,4 +98,18 @@ body > * {
 	right: 50%;
 	transform: translate(-50%, 0);
 
+}
+#infobox {
+	margin-top:10px;
+	position: fixed;
+	top: 0px;
+	left: 15px;
+	height: 24px;
+	width: 120px;
+	z-index: 99;
+	background: #4ecdc4;
+	box-shadow: inset 0 0 6px rgba(50,50,50,0.2);
+}
+#infobox:hover{
+	box-shadow: inset 0 0 6px rgba(50,50,50,0.5);
 }

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Index page</title>
+	<title>JavaScript Test</title>
 	<meta charset="utf-8">
+	<meta http-equiv='cache-control' content='no-cache'>
+	<meta http-equiv='expires' content='660'>
 	<link rel="stylesheet" href="index.css">
 	
 	</head>
@@ -50,30 +52,48 @@
 		
 		<div style="margin-top: 15px;">
 		<p>Форма с выбором разных картинок для отображения</p>
+		<p>На картинку можно нажать чтобы проверить что есть взаимодействие с мышью</p>
 		<select id="imgsel" onchange="prosm(this)">
 			<option disabled selected="selected">Выберите открытку</option>
-			<option value="crying">Плачущий ниггер</option>
-			<option value="cryingmature">Плачущий ниггер взрослый</option>
-			<option value="coffee">Ниггерский кофе</option>
+			<option value="tears">Плачущий кот</option>
+			<option value="bonked">Кота сплющило</option>
+			<option value="holiday">Кот после Нового Года</option>
+			<option value="crazy">Кот с ума сошел</option>
+			<option value="disappointed">Расстроеный кот</option>
+			<option value="coffee">Кот с кофе</option>
 
 		</select>
-		<img name="multiimg" id="disp" style=" position: relative; display: block; left:50%; right:50%; margin-bottom:10px; transform: translate(-50%, 10px);">
+		<img name="multiimg" onclick="onmouseclick()"
+			style=" max-width: 30%; max-height: 30%; 
+			border-radius: 10px; position: relative; 
+			display: block; 
+			left:50%; right:50%; 
+			margin-bottom:10px; 
+			transform: translate(-50%, 10px);">
 		</div>
 		<script>
 			var photos = new Array(3);
-			photos["cryingmature"] = new Image(225,225);
-			photos["cryingmature"].src = "img/cryingmature.jpeg";
-			photos["crying"] = new Image(300,168);
-			photos["crying"].src = "img/crying.jpg";
-			photos["coffee"] = new Image(565,318);
-			photos["coffee"].src = "img/coffee.jpeg";
+			photos["tears"] = new Image();
+			photos["tears"].src = "img/tears.png";
+			photos["bonked"] = new Image();
+			photos["bonked"].src = "img/bonked.jpg";
+			photos["holiday"] = new Image();
+			photos["holiday"].src = "img/holiday.jpg";
+			photos["crazy"] = new Image();
+			photos["crazy"].src = "img/crazy.jpg";
+			photos["disappointed"] = new Image();
+			photos["disappointed"].src = "img/disappointed.jpg";
+			photos["coffee"] = new Image();
+			photos["coffee"].src = "img/coffee.jpg";
 			function prosm(list){
 				document.multiimg.src = photos[list.options[list.selectedIndex].value].src;
-				jump('disp');
+				window.scrollTo(0, document.multiimg.offsetTop);
 			}
-			function jump(h){
-				var top = document.getElementById(h).offsetTop;
-				window.scrollTo(0, top);
+			function onmouseclick(){
+				let elem = document.getElementById("imgsel");
+				if(elem.selectedIndex > 0){ 
+					alert("Вы нажали на " + elem.options[elem.selectedIndex].innerHTML);
+				}
 			}
 		</script>
 	</body>
