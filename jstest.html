@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Index page</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="index.css">
+	
+	</head>
+	<body>
+		<h1>Рассчет функции ( sin(2*x)^y) + x ) * tan(7*x)</h1>
+		<div>
+		<input type="number" id="xNum" placeholder="x">
+		<input type="number" id="startY" placeholder="start Y">
+		<input type="number" id="endY" placeholder="end Y">
+		<input type="button" value="Ввод" onclick="processfunc(this)" >
+		<script>
+			function processfunc(button){
+				if( document.getElementById("xNum").value == ""){
+					alert("fill X field");
+					return;
+				} 
+				const tbl = document.querySelector('#tbl4js')
+				tbl.innerHTML = '<thead> <tr> <th style="width:50px">Y</th> <th style="width:100px">Результат</th> </tr> </thead>'
+				const x = +document.getElementById("xNum").value;
+				let y = +document.getElementById("startY").value;
+				let tbody = tbl.createTBody();
+				for(;y<=document.getElementById("endY").value;y++){
+					let row = tbody.insertRow();
+					
+					let th = document.createElement("th");
+					let text = document.createTextNode(y);
+					th.appendChild(text);
+					row.appendChild(th);
+					
+					th = document.createElement("th");
+					text = document.createTextNode((Math.pow(Math.sin(2*x),y)+x) * Math.tan(7*x));
+					th.appendChild(text);
+					row.appendChild(th);
+				}
+			}
+		</script>
+
+		</div>
+		<table id="tbl4js">
+			<thead>
+			<tr> <th style="width:50px">Y</th> <th style="width:100px">Результат</th> </tr>
+			<p>Результаты рассчета будут отображаться в таблице ниже</p>
+			</thead>
+		</table>
+		
+		<div style="margin-top: 15px;">
+		<p>Форма с выбором разных картинок для отображения</p>
+		<select id="imgsel" onchange="prosm(this)">
+			<option disabled selected="selected">Выберите открытку</option>
+			<option value="crying">Плачущий ниггер</option>
+			<option value="cryingmature">Плачущий ниггер взрослый</option>
+			<option value="coffee">Ниггерский кофе</option>
+
+		</select>
+		<img name="multiimg" id="disp" style=" position: relative; display: block; left:50%; right:50%; margin-bottom:10px; transform: translate(-50%, 10px);">
+		</div>
+		<script>
+			var photos = new Array(3);
+			photos["cryingmature"] = new Image(225,225);
+			photos["cryingmature"].src = "img/cryingmature.jpeg";
+			photos["crying"] = new Image(300,168);
+			photos["crying"].src = "img/crying.jpg";
+			photos["coffee"] = new Image(565,318);
+			photos["coffee"].src = "img/coffee.jpeg";
+			function prosm(list){
+				document.multiimg.src = photos[list.options[list.selectedIndex].value].src;
+				jump('disp');
+			}
+			function jump(h){
+				var top = document.getElementById(h).offsetTop;
+				window.scrollTo(0, top);
+			}
+		</script>
+	</body>
+</html>
