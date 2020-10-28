@@ -72,7 +72,7 @@ body > * {
 #stats th, td {
 	border-bottom: 1px solid #ddd; 
 }
-#stats tr:hover:nth-child(even),tr:hover {
+#stats tr:hover:nth-child(even), #stats tr:hover {
 	background-color: #4ecdc4;
 	border-bottom: 5px solid #eee;
 	border-top: 5px solid #eee;
